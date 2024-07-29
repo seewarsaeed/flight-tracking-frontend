@@ -1,0 +1,63 @@
+
+
+
+
+<div id="page">
+    <app-navbar></app-navbar>
+    <header id="gtco-header" class=" gtco-cover gtco-cover-md" role="banner" style="background-image: url(../../assets/homeAssets/images/img_bg_2.jpg)">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="row row-mt-15em">
+    
+                        <div class="col-md-7 mt-text" style="position: relative;top: 15em;">
+                            <span class="intro-text-small">My Flights</span>
+                            <h1>Trip With Your Favourite Destination.</h1>	
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="gtco-section">
+    
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">My Flights - table</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">User Name</th>
+                                <th scope="col">Flight Name</th>
+                                <th scope="col">Reservation Date</th>
+                                <th scope="col">Number of seats</th>
+                                <th scope="col">Total Price</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let Flights of myflight">
+                                <td>{{getUserNameById(Flights.user_Id)}}</td>
+                                <td>{{getFlightNameById(Flights.flight_Id)}}</td>
+                                <td>{{Flights.reservation_Date}}</td>
+                                <td>{{Flights.numberofseats}}</td>
+                                <td>{{getFlightPriceById(Flights.flight_Id)*Flights.numberofseats}}</td>
+
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    
+    <app-footer></app-footer>
+    </div>
+    
+  

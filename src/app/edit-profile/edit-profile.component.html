@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+
+<title>bs5 edit profile account details - Bootdey.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+    	body{margin-top:20px;
+background-color:#f2f6fc;
+color:#69707a;
+}
+.img-account-profile {
+    height: 10rem;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.card {
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
+}
+.card .card-header {
+    font-weight: 500;
+}
+.card-header:first-child {
+    border-radius: 0.35rem 0.35rem 0 0;
+}
+.card-header {
+    padding: 1rem 1.35rem;
+    margin-bottom: 0;
+    background-color: rgba(33, 40, 50, 0.03);
+    border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+.form-control, .dataTable-input {
+    display: block;
+    width: 100%;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #69707a;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #c5ccd6;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.35rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.nav-borders .nav-link.active {
+    color: #0061f2;
+    border-bottom-color: #0061f2;
+}
+.nav-borders .nav-link {
+    color: #69707a;
+    border-bottom-width: 0.125rem;
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+    </style>
+</head>
+<body>
+<div class="container-xl px-4 mt-4">
+<hr class="mt-0 mb-4">
+<div class="row">
+<div class="col-xl-4">
+
+<div class="card mb-4 mb-xl-0">
+<div class="card-header">Profile Picture</div>
+<div class="card-body text-center">
+
+<img class="img-account-profile rounded-circle mb-2" src="../../assets/Images/{{USers.image_Name}}" alt>
+
+<div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+
+
+</div>
+</div>
+</div>
+<div class="col-xl-8">
+
+<div class="card mb-4">
+<div class="card-header">Account Details</div>
+<div class="card-body">
+<form>
+
+  <div class="mb-3">
+    <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+    <input class="form-control" id="inputUsername" type="text"  value="{{USers.user_Name}}" disabled="true">
+    </div>
+    
+    <div class="row gx-3 mb-3">
+    
+    <div class="col-md-6">
+    <label class="small mb-1" for="inputFirstName">First name</label>
+    <input class="form-control" id="inputFirstName" type="text"  value="{{USers.first_Name}}" disabled="true">
+    </div>
+    
+    <div class="col-md-6">
+    <label class="small mb-1" for="inputLastName">Last name</label>
+    <input class="form-control" id="inputLastName" type="text" value="{{USers.last_Name}}" disabled="true">
+    </div>
+    </div>
+    
+    
+    <div class="mb-3">
+    <label class="small mb-1" for="inputEmailAddress">Email address</label>
+    <input class="form-control" id="inputEmailAddress" type="email" value="{{USers.email}}" disabled="true">
+    </div>
+    
+    <div class="mb-3">
+    <label class="small mb-1" for="inputEmailAddress">Password</label>
+    <input class="form-control" id="inputEmailAddress" type="text" value="{{USers.password}}" disabled="true">
+    </div>
+        
+    
+    <button class="btn btn-primary" type="button" (click)="openUpdateDailog(USers)">Edit Profile</button>
+    <a (click)="BackToHome()">Back To Home</a>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>
+
+<ng-template #callUpdateDialog>
+    
+    <h2 mat-dialog-title>Update User</h2>
+    <mat-dialog-content class="mat-typography">
+      <form class="example-form" [formGroup]="updateForm">
+
+
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="text" matInput formControlName="password" [(ngModel)]="previousUserData.password">
+            <span class="text-danger">{{passwordValidity}}</span>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput formControlName="first_Name" [(ngModel)]="previousUserData.first_Name">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput formControlName="last_Name" [(ngModel)]="previousUserData.last_Name">
+          </mat-form-field>
+          
+          <div class="example-full-width">
+            <label>Image Name</label>
+            <input type="file" accept="image/*" #file formControlName="image_Name" (change)="UploadFile(file.files)"  >
+          </div>
+
+
+         
+
+        </form>    
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="update()" [disabled]="!updateForm.valid" >Update</button>
+    </mat-dialog-actions>
+        </ng-template>

@@ -1,0 +1,63 @@
+
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <a class="fh5co-card-item image-popup">
+                    <figure>
+                        <div class="overlay"><i class="ti-plus"></i></div>
+                        <img src="../../assets/Images/{{Image_Name}}" alt="Image" class="img-responsive">
+                    </figure>
+                    <div class="fh5co-text">
+                        <h2>{{Flight_Name}}</h2>
+                        <h3 *ngIf="DepartureId && ArrivalId">{{getAirportNameById(DepartureId)}} - {{getAirportNameById(ArrivalId)}}</h3>
+                        <h3>{{DepartureInfo |date}} - {{ArrivalInfo |date}}</h3>
+                        <h4>Number of seats: {{numberOfSeats}}</h4>
+                        <h4>Price by each seat: {{Price}}</h4>
+                        <button type="button" class="btn btn-primary" style="width:200px; height: 50px; font-size: medium;" [disabled]="isButtonDisabled()" (click)="openReserveDialog(Flight_Id)">Reserve a Flight</button>
+                    </div>
+                </a>
+            </div>
+
+            <ng-template #callCreatePayDialog>
+                <h2 mat-dialog-title>Reserve A Flight</h2>
+                <mat-dialog-content class="mat-typography">
+                    <form class="example-form" [formGroup]="createForm">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Number Of Seats</mat-label>
+                          <input type="number" matInput formControlName="numberofseats" >
+                          <mat-error *ngIf="createForm.controls['numberofseats'].hasError('required')">
+                            Number Of Seats is <strong>required</strong> <br>
+                          </mat-error>
+                        </mat-form-field>
+                    </form> 
+                    <form class="example-form" [formGroup]="paymentForm">
+                        <mat-form-field class="example-full-width">
+                          <mat-label>Card Id</mat-label>
+                          <input type="number" matInput formControlName="card_Id" >
+                          <mat-error *ngIf="paymentForm.controls['card_Id'].hasError('required')">
+                            Card Id is <strong>required</strong> <br>
+                          </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>CVV</mat-label>
+                            <input type="number" matInput formControlName="cvv" >
+                            <mat-error *ngIf="paymentForm.controls['cvv'].hasError('required')">
+                                CVV is <strong>required</strong> <br>
+                            </mat-error>
+                            <mat-error *ngIf="paymentForm.controls['cvv'].hasError('maxlength')">
+                                The maximum length of CVV is <strong>3</strong> <br>
+                            </mat-error>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                            <mat-label>Expire Date</mat-label>
+                            <input type="date" matInput formControlName="expire_Date" >
+                            <mat-error *ngIf="paymentForm.controls['expire_Date'].hasError('required')">
+                                Expire Date is <strong>required</strong> <br>
+                            </mat-error>
+                          </mat-form-field>
+                    </form>    
+                  </mat-dialog-content>
+                  <mat-dialog-actions align="end">
+                    <button mat-button mat-dialog-close>Cancel</button>
+                    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="reserveFlight()">Reserve And Pay</button>
+                  </mat-dialog-actions>
+            </ng-template>
+

@@ -1,0 +1,9 @@
+.example-form mat-form-field {
+    display: block !important;
+    width: 100% !important;
+  }
+  .rounded-circle[_ngcontent-ng-c2806505944] {
+    border-radius: 50% !important;
+    width: 250px ;
+    height: 250px;
+}

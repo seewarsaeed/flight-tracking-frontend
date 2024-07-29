@@ -1,0 +1,73 @@
+
+<h2 mat-dialog-title>Create User</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="example-form" [formGroup]="createForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>User Name</mat-label>
+        <input type="text" matInput formControlName="User_Name" >
+        <mat-error *ngIf="createForm.controls['User_Name'].hasError('required')">
+         User Name is <strong>required</strong> <br>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['User_Name'].hasError('maxlength')">
+            The maximum length of Username should be 100 character<br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" >
+        <mat-error *ngIf="createForm.controls['password'].hasError('required')">
+         Password is <strong>required</strong> <br>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['password'].hasError('minlength')">
+            Please enter strong password with minimun length 8 characters <br>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['password'].hasError('maxlength')">
+            The maximum length of password should be 100 character <br>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['password'].hasError('pattern')">
+            Password must contain at least one uppercase letter, one lowercase letter, and one special character. <br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput formControlName="First_Name" >
+        <mat-error *ngIf="createForm.controls['First_Name'].hasError('required')">
+            First Name is <strong>required</strong> <br>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['First_Name'].hasError('maxlength')">
+            The maximum length of First Name should be 50 character<br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput formControlName="Last_Name" >
+        <mat-error *ngIf="createForm.controls['Last_Name'].hasError('required')">
+            Last Name is <strong>required</strong> <br>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['Last_Name'].hasError('maxlength')">
+            The maximum length of Last Name should be 50 character<br>
+        </mat-error>
+      </mat-form-field>
+      <div class="example-full-width">
+        <label>Image Name</label>
+        <input type="file" accept="image/*" #file formControlName="Image_Name" (change)="UploadFile(file.files)" >
+      </div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="Email" >
+        <mat-error *ngIf="createForm.controls['Email'].hasError('required')">
+            Email is <strong>required</strong> <br>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['Email'].hasError('email')">
+            Please enter valid Email Address<br>
+        </mat-error>
+      </mat-form-field>
+    </form>    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="save()">Install</button>
+</mat-dialog-actions>
+
+
+

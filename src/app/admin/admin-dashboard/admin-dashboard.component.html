@@ -1,0 +1,119 @@
+<div class="container-xxl position-relative bg-white d-flex p-0">
+
+<app-sidebar></app-sidebar>
+<div class="content">
+    <app-admin-navbar></app-admin-navbar>
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-6 col-xl-4">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <div class="ms-3">
+                        <p class="mb-2">Number of Registered Users</p>
+                        <h6 class="mb-0">{{numberOfRegisteredUsers}}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-4">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <div class="ms-3">
+                        <p class="mb-2">Number of Airports</p>
+                        <h6 class="mb-0">{{numberOfAirports}}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-4">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                    <div class="ms-3">
+                        <p class="mb-2">Max Number of People who Reserved Flight</p>
+                        <h6 class="mb-0">{{maxFlightName}} with {{maxFlighNumber}} reserved seats for {{maxFlightPrice}}JOD per seat</h6>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light rounded h-100 p-4">
+            <h6 class="mb-4">Reserved Flights - table</h6>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Reservation Date</th>
+                            <th scope="col">Paid Status</th>
+                            <th scope="col">Email Status </th>
+                            <th scope="col">Number of Seats </th>
+                            <th scope="col">User Name </th>
+                            <th scope="col">Flight Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let reservedFlight of appservice.reservedFlight">
+                            <td>{{reservedFlight.reservation_Date}}</td>
+                            <td>{{reservedFlight.paid_Status}}</td>
+                            <td>{{reservedFlight.email_Status}}</td>
+                            <td>{{reservedFlight.numberofseats}}</td>
+                            <td>{{ getUserNameByIdReserved(reservedFlight.user_Id) }}</td>
+                            <td>{{ getFlightNameById(reservedFlight.flight_Id) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded  p-4">
+                        <h6 class="mb-4">Aiports - Table</h6>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Location</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr *ngFor="let airports of airports">
+                                    <td>{{airports.airport_Name}}</td>
+                                    <td>{{airports.location}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded p-4">
+                        <h6 class="mb-4">Testimonial - Table</h6>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">name</th>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Feedback</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let testimonials of testimonials">
+                                    <td>{{testimonials.name}}</td>
+                                    <td>{{ getUserNameByIdTesti(testimonials.user_Id) }}</td>
+                                    <td>{{testimonials.feedback}}</td>
+                                    <td>{{testimonials.status}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div style="height:500px;width:600px;" #chartContainer>
+                <canvas id="myChart"></canvas>
+            </div>
+    </div>
+</div>
+    <app-admin-footer></app-admin-footer>
+</div>
+
+</div>

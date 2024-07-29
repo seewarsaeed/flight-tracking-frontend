@@ -1,0 +1,70 @@
+<div id="page">
+<app-navbar></app-navbar>
+<header id="gtco-header" class=" gtco-cover gtco-cover-md" role="banner" style="background-image: url(../../assets/homeAssets/images/img_bg_2.jpg)">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-left">
+                <div class="row row-mt-15em">
+
+                    <div class="col-md-7 mt-text" style="position: relative;top: 15em;">
+                        <span class="intro-text-small">Flights</span>
+                        <h1>Trip With Your Favourite Destination.</h1>	
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</header>
+<div class="gtco-section">
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+        <h2>All Flights</h2>
+        <p>Set your sights on the skies and discover an enchanting selection of flights that await your exploration:</p>
+    </div>
+        <div class="col-md-4 text-center">
+          <input type="text" class="form-control" placeholder="Search by Flight Name" [(ngModel)]="_searchName" style="margin-left: 50%;">
+        <!-- <div class="col-md-6">
+          <input type="text" class="form-control" placeholder="Search by Airport Name" [(ngModel)]="_airportName">
+        </div> -->
+      </div>  
+ </div>
+</div>
+ <div class="gtco-section">
+  <div class="gtco-container">
+    <div class="row">
+      <div *ngIf="appservice.flights.length != 1">
+          <app-flight-card  *ngFor="let flight of appservice.flights|searchFlightByName:_searchName"
+          [Flight_Id]="flight.flight_Id"
+          [Flight_Name]="flight.flight_Name"
+          [Price]="flight.price"
+          [numberOfSeats]="flight.numberofemptyseats"
+          [Image_Name]="flight.image_Name"
+          [DepartureInfo]="flight.departure_Datetime"
+          [ArrivalInfo]="flight.arrival_Datetime"
+          [DepartureId]="flight.departure_Airport_Id"
+          [ArrivalId]="flight.arrival_Airport_Id"
+          [Arrival_Status]="flight.arrival_Status"
+          ></app-flight-card>
+      </div>
+      </div>
+      <div *ngIf="appservice.flights.length == 1">
+          <div class="gtco-section">
+          <div class="gtco-container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                          <p>Sorry, there are no flights yet or something worng happened.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+ </div>
+
+<app-footer></app-footer>
+</div>
+

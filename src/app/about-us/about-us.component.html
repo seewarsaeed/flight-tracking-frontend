@@ -1,0 +1,45 @@
+<div id="page">
+
+<app-navbar></app-navbar>
+<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(../../assets/homeAssets/images/img_bg_3.jpg)">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-left">
+                <div class="row row-mt-15em">
+
+                    <div class="col-md-7 mt-text" style="position: relative;top: 15em;">
+                        <span class="intro-text-small">About-Us</span>
+                        <h1>Who We Are?</h1>	
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</header>
+<div id="gtco-counter" class="gtco-section">
+    <div class="gtco-container">
+    <section class="about-info-area section-gap">
+        <div class="container">
+            <div class="row align-items-center">
+                <div *ngFor="let aboutUsValue of aboutUs">
+                    <div class="col-lg-6 info-left" >
+                        <img class="img-fluid" src="../../../assets/Images/{{aboutUsValue.image_Name}}" width="65%" height="" style="border-radius: 20%; box-shadow: 15px 15px 15px 2px rgba(0,0,0,0.1);">
+                    </div>
+                    <div class="col-lg-6 info-right">
+                        
+                        <h1>{{aboutUsValue.title}}</h1>
+                        <p>
+                            {{aboutUsValue.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>	
+    </section>
+    </div>
+</div>
+<app-footer></app-footer>
+</div>

@@ -1,0 +1,68 @@
+
+<div class="container-xxl position-relative bg-white d-flex p-0">
+<!-- Sign Up Start -->
+<div class="container-fluid">
+    <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+            <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                <div class="d-flex align-items-center justify-content-center mb-3">
+                    <h3 style="font-weight: bold;">Sign Up</h3>
+                </div>
+                <form [formGroup]="registerForm">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingText" placeholder="Fname" formControlName="First_Name" (change)="FNameValidation()">
+                        <label class="custom-label" for="floatingText">First Name</label>
+                        <span class="text-danger">{{FNameValidity}}</span>
+                        <!-- <span class="text-danger" *ngIf="registerForm.controls['First_Name'].hasError('required')">First Name is required <br></span>
+                        <span class="text-danger" *ngIf="registerForm.controls['First_Name'].hasError('maxlength')">The maximum length of First Name should be 50 character</span> -->
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingText" placeholder="Lname" formControlName="Last_Name" (change)="LNameValidation()">
+                        <label class="custom-label" for="floatingText">Last Name</label>
+                        <span class="text-danger">{{LNameValidity}}</span>
+                        <!-- <span class="text-danger" *ngIf="registerForm.controls['Last_Name'].hasError('required')">Last Name is required <br></span>
+                        <span class="text-danger" *ngIf="registerForm.controls['Last_Name'].hasError('maxlength')">The maximum length of Last Name should be 50 character</span> -->
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingText" placeholder="username" formControlName="User_Name" (change)="UserNameValidation()">
+                        <label class="custom-label" for="floatingText">Username</label>
+                        <span class="text-danger">{{UserNameValidity}}</span>
+                        <!-- <span class="text-danger" *ngIf="registerForm.controls['User_Name'].hasError('required')">Username is required <br></span>
+                        <span class="text-danger" *ngIf="registerForm.controls['User_Name'].hasError('maxlength')">The maximum length of Username should be 100 character</span> -->
+                    </div>
+                    <label>Image Name</label>
+                    <div class="form-floating mb-3">
+                        <input type="file" accept="image/*" #file formControlName="Image_Name" (change)="UploadFile(file.files)" >
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="Email" (change)="emailValidation()">
+                        <label class="custom-label" for="floatingInput">Email address</label>
+                        <span class="text-danger">{{emailValidity}}</span>
+                        <!-- <span class="text-danger" *ngIf="registerForm.controls['Email'].hasError('required')">Email is required <br></span>
+                        <span class="text-danger" *ngIf="registerForm.controls['Email'].hasError('email')">Please enter valid Email Address</span> -->
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="password" formControlName="password" (change)="passwordValidation()">
+                        <label class="custom-label" for="floatingPassword">Password</label>
+                        <span class="text-danger">{{passwordValidity}}</span>
+                        <!-- <span class="text-danger" *ngIf="registerForm.controls['password'].hasError('required')">Password is required <br></span>
+                        <span class="text-danger" *ngIf="registerForm.controls['password'].hasError('minlength')">Please enter strong password with minimun length 8 characters <br></span>
+                        <span class="text-danger" *ngIf="registerForm.controls['password'].hasError('maxlength')">The maximum length of password should be 100 character <br></span>
+                        <span class="text-danger" *ngIf="registerForm.controls['password'].hasError('pattern')">Password must contain at least one uppercase letter, one lowercase letter, and one special character.</span> -->
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Repeat Password" formControlName="repeatPassword" (change)="matchError()">
+                        <label class="custom-label" for="floatingPassword">Repeat password</label>
+                        <span class="text-danger" *ngIf="registerForm.controls['repeatPassword'].hasError('misMatch')">Repeated password should match the  password</span>
+                    </div>
+                    <button type="button" class="btn btn-primary py-3 w-100 mb-4" (click)="register()" [disabled]="!registerForm.valid">Sign Up</button>
+                </form> 
+                <span *ngIf="appservice.createUserSuccessMessage">{{ appservice.createUserSuccessMessage }}</span>
+                <p class="text-center mb-0">Already have an Account? <a routerLink="/security/login">Sign In</a></p>
+                <p class="text-center mb-0">Back to home? <a routerLink="">Press Here</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sign Up End -->
+</div>

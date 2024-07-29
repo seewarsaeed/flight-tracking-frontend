@@ -1,0 +1,88 @@
+
+<h2 mat-dialog-title>Create Flight</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="example-form" [formGroup]="createForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Flight Name</mat-label>
+        <input type="text" matInput formControlName="flight_Name" >
+        <mat-error *ngIf="createForm.controls['flight_Name'].hasError('required')">
+            Flight Name is <strong>required</strong> <br>
+        </mat-error>
+        <mat-error *ngIf="createForm.controls['flight_Name'].hasError('maxlength')">
+            The maximum length of Flight Name should be 100 character<br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Price</mat-label>
+        <input type="number" matInput formControlName="price" >
+        <mat-error *ngIf="createForm.controls['price'].hasError('required')">
+            Price is <strong>required</strong> <br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number Of Empty Seats</mat-label>
+        <input type="number" matInput formControlName="numberofemptyseats" >
+        <mat-error *ngIf="createForm.controls['numberofemptyseats'].hasError('required')">
+            Number Of Empty Seats is <strong>required</strong> <br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Number Of Reserved Seats</mat-label>
+        <input type="number" matInput formControlName="numberofreservedseats" >
+        <mat-error *ngIf="createForm.controls['numberofreservedseats'].hasError('required')">
+            Number Of Reserved Seats is <strong>required</strong> <br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Departure dateTime</mat-label>
+        <input type="date" matInput formControlName="departure_Datetime" >
+        <mat-error *ngIf="createForm.controls['departure_Datetime'].hasError('required')">
+            Departure dateTime is <strong>required</strong> <br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Arrival dateTime</mat-label>
+        <input type="date" matInput formControlName="arrival_Datetime" >
+        <mat-error *ngIf="createForm.controls['arrival_Datetime'].hasError('required')">
+            Arrival dateTime is <strong>required</strong> <br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Additional Cost</mat-label>
+        <input type="number" matInput formControlName="additionalcost" >
+        <mat-error *ngIf="createForm.controls['additionalcost'].hasError('required')">
+            Additional Cost is <strong>required</strong> <br>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Departure Airport</mat-label>
+        <mat-select formControlName="departure_Airport_Id">
+          <mat-option *ngFor="let airport of airports" [value]="airport.airport_Id">{{ airport.airport_Name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="createForm.controls['departure_Airport_Id'].hasError('required')">
+          Departure Airport is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Arrival Airport</mat-label>
+        <mat-select formControlName="arrival_Airport_Id">
+          <mat-option *ngFor="let airport of airports" [value]="airport.airport_Id">{{ airport.airport_Name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="createForm.controls['arrival_Airport_Id'].hasError('required')">
+          Arrival Airport is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="example-full-width">
+        <label>Image Name</label>
+        <input type="file" accept="image/*" #file formControlName="Image_Name" (change)="UploadFile(file.files)" >
+      </div>
+    </form>    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="save()">Install</button>
+</mat-dialog-actions>
+
+
+
+

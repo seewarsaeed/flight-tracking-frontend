@@ -1,0 +1,21 @@
+
+<h2 mat-dialog-title>Create Header</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="example-form" [formGroup]="createForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>Website Name</mat-label>
+        <input type="text" matInput formControlName="website_Name" >
+        <mat-error *ngIf="createForm.controls['website_Name'].hasError('required')">
+            Website Name is <strong>required</strong> <br>
+        </mat-error>
+      </mat-form-field>
+    </form>    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="save()" >Create</button>
+</mat-dialog-actions>
+
+
+
+

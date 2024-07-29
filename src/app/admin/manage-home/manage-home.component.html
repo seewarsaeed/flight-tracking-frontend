@@ -1,0 +1,378 @@
+<div class="container-xxl position-relative bg-white d-flex p-0">
+    <app-sidebar></app-sidebar>
+    <div class="content">
+        <app-admin-navbar></app-admin-navbar>
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+
+                <div class="col-sm-12 col-xl-12">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Footer - Table</h6>
+                        <button class="btn btn-primary m-2" (click)="openCreateDialogFooter()">Create New</button>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Logo</th>
+                                    <th scope="col">Brief</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Links Title</th>
+                                    <th scope="col">Copy Right</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let footers of appservice.footer">
+                                    <td>{{footers.footer_Id}}</td>
+                                    <td><img src="../../../assets/Images/{{footers.logo}}" width="100px" style="border-radius: 20px;"></td>
+                                    <td>{{footers.brief}}</td>
+                                    <td>{{footers.location}}</td>
+                                    <td>{{footers.email}}</td>
+                                    <td>{{footers.phone_Number}}</td>
+                                    <td>{{footers.linkstitle}}</td>
+                                    <td>{{footers.copyright}}</td>
+                                    <td>
+                                        <button class="btn btn-primary m-1" (click)="openUpdateDialogFooter(footers)">Update</button>
+                                        <button class="btn btn-danger m-1" (click)="openDeleteDialogFooter(footers.footer_Id)">Delete</button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Header - Table</h6>
+                      <button class="btn btn-primary m-2" (click)="openCreateDialogHeader()">Create New</button>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Website Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let headers of appservice.header">
+                                    <td>{{headers.header_Id}}</td>
+                                    <td>{{headers.website_Name}}</td>
+                                    <td>
+                                        <button class="btn btn-primary m-1" (click)="openUpdateDialogHeader(headers)">Update</button>
+                                        <button class="btn btn-danger m-1" (click)="openDeleteDialogHeader(headers.header_Id)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                   <ng-template #callDeleteDialog>
+                        <div style="padding: 15px;">
+                            <p>Are you sure you want to delete this item?</p>
+                            <button class="btn btn-primary m-1" mat-dialog-close="yes">Yes</button>
+                            <button class="btn btn-danger m-1" mat-dialog-close="no">No</button>
+                       </div>
+                    </ng-template>
+
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">About us - Table</h6>
+                        <button class="btn btn-primary m-2" (click)="openCreateDialogAbout()">Create New</button>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let About of appservice.about">
+                                    <td>{{About.about_Us_Id}}</td>
+                                    <td><img src="../../../assets/Images/{{About.image_Name}}" width="100px" style="border-radius: 20px;"></td>
+                                    <td>{{About.description}}</td>
+                                    <td>{{About.title}}</td>                                   
+                                     <td>
+                                        <button class="btn btn-primary m-1" (click)="openUpdateDialogAbout(About)">Update</button>
+                                        <button class="btn btn-danger m-1" (click)="openDeleteDialogAbout(About.about_Us_Id)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xl-6">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Backgorund - Table</h6>
+                        <button class="btn btn-primary m-2" (click)="openCreateDialogBackGround()">Create New</button>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let BackGround of appservice.background">
+                                    <td>{{BackGround.background_Id}}</td>
+                                    <td>{{BackGround.description}}</td>
+                                    <td><img src="../../../assets/Images/{{BackGround.image_Name}}" width="100px" style="border-radius: 20px;"></td>
+                                    <td>
+                                        <button class="btn btn-primary m-1" (click)="openUpdateDialogBackGround(BackGround)">Update</button>
+                                        <button class="btn btn-danger m-1" (click)="openDeleteDialogBackGround(BackGround.background_Id)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Testimonial - Table</h6>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Feedback</th>
+                                        <th scope="col">Status</th>
+                                        <!-- <th scope="col">User Name</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody *ngFor="let Testimonial of appservice.testimonial">
+                                    <tr >
+                                        <td>{{Testimonial.testimonial_Id}}</td>
+                                        <td>{{Testimonial.name}}</td>
+                                        <td>{{Testimonial.feedback}}</td>
+                                        <td>{{Testimonial.status}}</td>
+                                        <!-- <td>{{Testimonial.Name}}</td> -->
+                                        <td>
+                                            <button class="btn btn-primary m-1" (click)="openUpdateDialogTestimonial(Testimonial)">Update</button>
+                                            <button class="btn btn-danger m-1" (click)="openDeleteDialogTestimonial(Testimonial.testimonial_Id)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                  <div class="bg-light rounded h-100 p-4">
+                      <h6 class="mb-4">Contact us - Table</h6>
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th scope="col">ID</th>
+                                      <th scope="col">Name</th>
+                                      <th scope="col">Email</th>
+                                      <th scope="col">Subject</th>
+                                      <th scope="col">Message</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let contact of appservice.contactUs ">
+                                      <td>{{contact.contact_Us_Id}}</td>
+                                      <td>{{contact.name}}</td>
+                                      <td>{{contact.email}}</td>
+                                      <td>{{contact.subject}}</td>
+                                      <td>{{contact.message}}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+
+            </div>
+        </div>
+        <app-admin-footer></app-admin-footer>
+    </div>      
+</div>
+
+
+
+
+<ng-template #callUpdateDialogFooter>
+
+    <h2 mat-dialog-title>Update Footer</h2>
+    <mat-dialog-content class="mat-typography">
+      <form class="example-form" [formGroup]="updateFormFooter">
+        <div class="example-full-width">
+          <label>Footer Logo</label>
+          <input type="file" accept="image/*" #file formControlName="logo" (change)="UploadFileFooter(file.files)" >
+        </div>
+          <br/>
+          <mat-form-field class="example-full-width">
+            <mat-label>Footer Brief</mat-label>
+            <input type="text" matInput formControlName="brief" [(ngModel)]="Previous_data_Footer.brief">
+          </mat-form-field>
+          <br/>
+          <mat-form-field class="example-full-width">
+            <mat-label>Location</mat-label>
+            <input type="text" matInput formControlName="location" [(ngModel)]="Previous_data_Footer.location">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput formControlName="email" [(ngModel)]="Previous_data_Footer.email">
+          </mat-form-field>
+          <br/>
+          <mat-form-field class="example-full-width">
+            <mat-label>Phone_Number</mat-label>
+            <input type="text" matInput formControlName="phone_Number" [(ngModel)]="Previous_data_Footer.phone_Number">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>LinksTitle</mat-label>
+            <input type="text" matInput formControlName="linkstitle" [(ngModel)]="Previous_data_Footer.linkstitle">
+          </mat-form-field>
+          <br/>
+          <mat-form-field class="example-full-width">
+            <mat-label>CopyRight</mat-label>
+            <input type="text" matInput formControlName="copyright" [(ngModel)]="Previous_data_Footer.copyright">
+          </mat-form-field>
+        </form>    
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial  (click)="updateFooter()">Update</button>
+    </mat-dialog-actions>
+</ng-template>
+
+         
+<ng-template #callUpdateDialogHeader>
+
+    <h2 mat-dialog-title>Update Header</h2>
+    <mat-dialog-content class="mat-typography">
+      <form class="example-form" [formGroup]="updateFormHeader">
+          <mat-form-field class="example-full-width">
+            <mat-label>Website Name</mat-label>
+            <input type="text" matInput formControlName="website_Name" [(ngModel)]="Previous_data_Header.website_Name">
+          </mat-form-field>
+     </form>    
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateHeader()">Update</button>
+    </mat-dialog-actions>
+</ng-template>
+
+  <ng-template #callDeleteDialogBackGround>
+            <div style="padding: 15px;">
+              <p>Are you sure you want to delete this item?</p>
+              <button class="btn btn-primary m-1" mat-dialog-close="yes">Yes</button>
+              <button class="btn btn-danger m-1" mat-dialog-close="no">No</button>
+            </div>
+ </ng-template>
+             
+
+        <ng-template #callDeleteDialogAbout>
+            <div style="padding: 15px;">
+              <p>Are you sure you want to delete this item?</p>
+              <button class="btn btn-primary m-1" mat-dialog-close="yes">Yes</button>
+              <button class="btn btn-danger m-1" mat-dialog-close="no">No</button>
+            </div>
+            </ng-template>
+             
+
+
+
+
+ <!-- ____________________________________Background_____________________________________ -->
+
+
+        <ng-template #callUpdateDialogBackGround>
+    
+            <h2 mat-dialog-title>Update BackGround</h2>
+            <mat-dialog-content class="mat-typography">
+              <form class="example-form" [formGroup]="updateFormBackGround">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>description</mat-label>
+                    <input type="text" matInput formControlName="description" [(ngModel)]="previousbackgroundData.description" >
+                  </mat-form-field>
+                
+                  <div class="example-full-width">
+                    <label>Image Name</label>
+                    <input type="file" accept="image/*" #file formControlName="image_Name" (change)="UploadFileBackGround(file.files)" >
+                  </div>
+                </form>    
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+              <button mat-button mat-dialog-close>Cancel</button>
+              <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateBackGround()">Update</button>
+            </mat-dialog-actions>
+                </ng-template>
+
+<!-- <____________________________________About_____________________________________ -->
+    <ng-template #callUpdateDialogAbout>
+    
+        <h2 mat-dialog-title>Update About</h2>
+        <mat-dialog-content class="mat-typography">
+          <form class="example-form" [formGroup]="updateFormAbout">
+              <mat-form-field class="example-full-width">
+                <mat-label>description</mat-label>
+                <input type="text" matInput formControlName="description" [(ngModel)]="previousAboutData.description" >
+              </mat-form-field>
+    
+              <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input type="text" matInput formControlName="title" [(ngModel)]="previousAboutData.title" >
+              </mat-form-field>
+    
+              <div class="example-full-width">
+                <label>Image Name</label>
+                <input type="file" accept="image/*" #file formControlName="image_Name" (change)="UploadFileAbout(file.files)" >
+              </div>
+            </form>    
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+          <button mat-button mat-dialog-close>Cancel</button>
+          <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateAbout()">Update</button>
+        </mat-dialog-actions>
+          </ng-template>
+
+          <!-- __________Testimonial_______________________ -->
+          <ng-template #callUpdateDialogTestimonial>
+    
+            <h2 mat-dialog-title>Update Testimonial</h2>
+            <mat-dialog-content class="mat-typography">
+              <form class="example-form" [formGroup]="updateFormTestimonial">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput formControlName="name" [(ngModel)]="previousTestimonialData.name" >
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Feedback</mat-label>
+                    <input type="text" matInput formControlName="feedback" [(ngModel)]="previousTestimonialData.feedback" >
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status" [(ngModel)]="previousTestimonialData.status">
+                      <mat-option value="true">True</mat-option>
+                      <mat-option value="false">False</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                
+                  
+                </form>    
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+              <button mat-button mat-dialog-close>Cancel</button>
+              <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="updateTestimonial()">Update</button>
+            </mat-dialog-actions>
+                </ng-template>
+
+
+
+                <ng-template #callDeleteDialogTestimonial>
+                    <div style="padding: 15px;">
+                      <p>Are you sure you want to delete this item?</p>
+                      <button class="btn btn-primary m-1" mat-dialog-close="yes">Yes</button>
+                      <button class="btn btn-danger m-1" mat-dialog-close="no">No</button>
+                    </div>
+                    </ng-template>

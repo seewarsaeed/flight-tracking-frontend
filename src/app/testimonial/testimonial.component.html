@@ -1,0 +1,79 @@
+<div id="page">
+    <app-navbar></app-navbar>
+    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(../../assets/homeAssets/images/img_bg_3.jpg)">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="row row-mt-15em">
+    
+                        <div class="col-md-7 mt-text" style="position: relative;top: 15em;">
+                            <span class="intro-text-small">Testimonial</span>
+                            <h1>Kind Words, Happy Hearts</h1>	
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="gtco-section border-bottom">
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let testimonial of testimonials">
+                    <div class="testimonial" *ngIf="testimonial.status === 'true'">
+                        <p>{{testimonial.feedback}}</p>
+                        <h5><em>-{{testimonial.name}}</em></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    
+
+
+    <div class="gtco-section border-bottom">
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                    <h3>Get In Touch</h3>
+                    <form action="#" [formGroup]="testimonialForm">
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="sr-only" for="name">Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Your Name" formControlName="name">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <label class="sr-only" for="feedback">Message</label>
+                                <textarea name="feedback" id="feedback" cols="30" rows="10" class="form-control" placeholder="Write us something" formControlName="feedback"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Send Message" class="btn btn-primary" [disabled]="!testimonialForm.valid"  (click)="SendTestionial()" >
+                        </div>
+                        <p class="text-danger" *ngIf="!LoggedIn()"></p>
+                    </form>
+                
+                </div>
+              
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <app-footer></app-footer>
+</div>
+
+<ng-template #callDialog>
+    <div style="padding: 15px;">
+      <p>You can not send any testimonial without login ! </p>
+      <button class="btn btn-primary m-1" mat-dialog-close="yes">Login</button>
+      <button class="btn btn-danger m-1" mat-dialog-close="no">Cancel</button>
+    </div>
+    </ng-template>

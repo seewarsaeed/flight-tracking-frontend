@@ -1,0 +1,39 @@
+<footer id="gtco-footer" role="contentinfo" *ngFor="let footer of footer">
+    <div class="gtco-container">
+        <div class="row row-p	b-md" >
+            <div class="col-md-2">
+                <div class="gtco-widget">
+                    <img src="../../../assets/Images/{{footer.logo}}" style="width: 90%;">
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="gtco-widget">
+                    <h3>Brief</h3>
+                    <p>{{footer.brief}}</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-md-push-1">
+                <div class="gtco-widget">
+                    <h3>Get In Touch</h3>
+                    <ul class="gtco-quick-contact">
+                        <li><a href="#" style="color: #09C6AB;"><i class="icon-phone"></i>{{footer.phone_Number}}</a></li>
+                        <li><a href="#" style="color: #09C6AB;"><i class="icon-mail2"></i> {{footer.email}}</a></li>
+                        <li><a href="#" style="color: #09C6AB;"><i class="icon-chat"></i> {{footer.location}}</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row copyright align-items-center">
+            <div class="col-md-12">
+                <p class="text-center 3">
+                    <small class="block">&copy; {{footer.copyright}}</small> 
+                </p>
+            </div>
+        </div>
+
+    </div>
+</footer>

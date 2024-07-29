@@ -1,0 +1,78 @@
+	
+<div id="page">
+<app-navbar></app-navbar>
+<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(../../assets/homeAssets/images/img_bg_3.jpg)">
+    <div class="overlay"></div>
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 text-left">
+                <div class="row row-mt-15em">
+
+                    <div class="col-md-7 mt-text" style="position: relative;top: 15em;">
+                        <span class="intro-text-small">Don't be shy</span>
+                        <h1>Get In Touch</h1>	
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="gtco-section border-bottom">
+    <div class="gtco-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12">
+                <h3>Get In Touch</h3>
+                <form action="#" [formGroup]="contactForm">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="sr-only" for="name">Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your firstname" formControlName="name">
+                            <!-- <span class="text-danger" *ngIf="contactForm.controls['name'].hasError('required')">Name is required</span>   -->
+                            
+                        </div>
+                        
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="sr-only" for="email">Email</label>
+                            <input type="text" id="email" class="form-control" placeholder="Your email address" formControlName="email" (change)="emailValidation()">
+                            <span class="text-danger">{{validEmail}}</span>
+                            <!-- <span class="text-danger" *ngIf="contactForm.controls['email'].hasError('required')">Email is required</span>  
+                            <span class="text-danger" *ngIf="contactForm.controls['email'].hasError('email')">Email is not valid</span>   -->
+                     
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="sr-only" for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Your subject of this message"  formControlName="subject">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="sr-only" for="message">Message</label>
+                            <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write us something" formControlName="message"></textarea>
+                            <!-- <span class="text-danger" *ngIf="contactForm.controls['message'].hasError('required')">message is required</span>   -->
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Send Message" class="btn btn-primary" [disabled]="!contactForm.valid" (click)="sendMsg()">
+                    </div>
+
+                </form>		
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+</div>

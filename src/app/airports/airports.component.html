@@ -1,0 +1,53 @@
+<div id="page">
+    <app-navbar></app-navbar>
+    <header id="gtco-header" class=" gtco-cover gtco-cover-md" role="banner" style="background-image: url(../../assets/homeAssets/images/img_bg_2.jpg)">
+        <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="row row-mt-15em">
+    
+                        <div class="col-md-7 mt-text" style="position: relative;top: 15em;">
+                            <span class="intro-text-small">Airports</span>
+                            <h1>Where Journeys Begin.</h1>	
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div></header>
+        <div class="gtco-section">
+            <div class="gtco-container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                        <h2>All Airports</h2>
+                        <p>Where Journeys Begin..</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div *ngIf="appservice.airports.length != 1">
+                        <app-airport-card  *ngFor="let airport of appservice.airports"
+                        [Airport_Name]="airport.airport_Name"
+                        [Location]="airport.location"
+                        ></app-airport-card>
+                    </div>
+                    <div *ngIf="appservice.airports.length == 1">
+                        <div class="gtco-section">
+                            <div class="gtco-container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                                        <p>Sorry, there are no airports yet or something worng happened.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <app-footer></app-footer>
+    </div>
+    
+    

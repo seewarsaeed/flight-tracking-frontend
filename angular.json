@@ -1,0 +1,142 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "FlightTracker": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/flight-tracker",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/homeAssets/css/animate.css",
+              "src/assets/homeAssets/css/icomoon.css",
+              "src/assets/homeAssets/css/themify-icons.css",
+              "src/assets/homeAssets/css/bootstrap.css",
+              "src/assets/homeAssets/css/magnific-popup.css",
+              "src/assets/homeAssets/css/bootstrap-datepicker.min.css",
+              "src/assets/homeAssets/css/owl.carousel.min.css",
+              "src/assets/homeAssets/css/owl.theme.default.min.css",
+              "src/assets/homeAssets/css/style.css",
+              "src/assets/adminAssets/lib/owlcarousel/assets/owl.carousel.min.css",
+              "src/assets/adminAssets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css",
+              "src/assets/adminAssets/css/bootstrap.min.css",
+              "src/assets/adminAssets/css/style.css",
+              "node_modules/ngx-spinner/animations/pacman.css",
+              "node_modules/ngx-toastr/toastr.css"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/homeAssets/js/modernizr-2.6.2.min.js",
+              "src/assets/homeAssets/js/jquery.min.js",
+              "src/assets/homeAssets/js/jquery.easing.1.3.js",
+              "src/assets/homeAssets/js/bootstrap.min.js",
+              "src/assets/homeAssets/js/jquery.waypoints.min.js",
+              "src/assets/homeAssets/js/owl.carousel.min.js",
+              "src/assets/homeAssets/js/jquery.countTo.js",
+              "src/assets/homeAssets/js/jquery.stellar.min.js",
+              "src/assets/homeAssets/js/jquery.magnific-popup.min.js",
+              "src/assets/homeAssets/js/magnific-popup-options.js",
+              "src/assets/homeAssets/js/bootstrap-datepicker.min.js",
+              "src/assets/homeAssets/js/main.js",
+              "src/assets/adminAssets/lib/chart/chart.min.js",
+              "src/assets/adminAssets/lib/easing/easing.min.js",
+              "src/assets/adminAssets/lib/waypoints/waypoints.min.js",
+              "src/assets/adminAssets/lib/owlcarousel/owl.carousel.min.js",
+              "src/assets/adminAssets/lib/tempusdominus/js/moment.min.js",
+              "src/assets/adminAssets/lib/tempusdominus/js/moment-timezone.min.js",
+              "src/assets/adminAssets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js",
+              "src/assets/custom.js",
+              "node_modules/pdfmake/build/vfs_fonts.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "FlightTracker:build:production"
+            },
+            "development": {
+              "browserTarget": "FlightTracker:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "FlightTracker:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "16d53037-23b0-46e8-8b57-ec9b8d00cc4a"
+  }
+}
